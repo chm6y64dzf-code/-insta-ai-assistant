@@ -118,7 +118,9 @@ placeholder="例：副業初心者の20代">
 </div>
 
 <div id="result"></div>
-
+<button id="copyButton" onclick="copyResult()" style="display:none;">
+📋 生成結果をコピー
+</button>
 </div>
 
 <script>
@@ -161,11 +163,16 @@ async function createPost() {
     }
 
     result.textContent = data.text;
-
+document.getElementById("copyButton").style.display = "block";
   } catch (error) {
     result.textContent =
       "⚠️ エラーが発生しました\n\n" + error.message;
   }
+}
+async function copyResult() {
+  const text = document.getElementById("result").textContent;
+  await navigator.clipboard.writeText(text);
+  alert("コピーしました！");
 }
 </script>
 
