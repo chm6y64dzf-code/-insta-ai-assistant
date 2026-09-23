@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta AI</title>
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#0f0f12;
+  color:white;
+  margin:0;
+  padding:20px;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+}
+
+h1{
+  margin-bottom:5px;
+}
+
+.sub{
+  color:#aaa;
+  margin-bottom:30px;
+}
+
+.card{
+  background:#1c1c21;
+  padding:20px;
+  border-radius:18px;
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+input,select{
+  box-sizing:border-box;
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #444;
+  background:#29292f;
+  color:white;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  font-size:17px;
+  font-weight:bold;
+  background:white;
+  color:black;
+}
+
+#result{
+  white-space:pre-wrap;
+  line-height:1.7;
+  margin-top:25px;
+  padding:20px;
+  background:#1c1c21;
+  border-radius:18px;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📱 Insta AI</h1>
+<div class="sub">Instagram投稿作成アシスタント</div>
+
+<div class="card">
+
+<label>ジャンル</label>
+<select id="genre">
+<option>AI副業</option>
+<option>お金・節約</option>
+<option>仕事・転職</option>
+<option>クレジットカード</option>
+<option>ダイエット</option>
+<option>その他</option>
+</select>
+
+<label>投稿テーマ</label>
+<input id="theme"
+placeholder="例：スマホだけでできるAI副業">
+
+<label>ターゲット</label>
+<input id="target"
+placeholder="例：副業初心者の20代">
+
+<label>投稿の目的</label>
+<select id="goal">
+<option>noteへ誘導</option>
+<option>フォロワーを増やす</option>
+<option>保存してもらう</option>
+<option>商品を紹介する</option>
+</select>
+
+<button onclick="createPost()">
+✨ 投稿案を作る
+</button>
+
+</div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+function createPost(){
+
+const genre =
+document.getElementById("genre").value;
+
+const theme =
+document.getElementById("theme").value;
+
+const target =
+document.getElementById("target").value;
+
+const goal =
+document.getElementById("goal").value;
+
+if(!theme){
+ alert("投稿テーマを入力してください");
+ return;
+}
+
+const result = document.getElementById("result");
+
+result.style.display="block";
+
+result.textContent =
+`✨ 投稿作成準備OK！
+
+【ジャンル】
+${genre}
+
+【テーマ】
+${theme}
+
+【ターゲット】
+${target || "未指定"}
+
+【目的】
+${goal}
+
+────────────
+
+次のステップでAIと接続すると、
+
+・伸びやすいタイトル
+・カルーセル投稿
+・キャプション
+・ハッシュタグ
+・noteへの誘導文
+
+を自動生成できるようになります。`;
+
+}
+</script>
+
+</body>
+</html>
