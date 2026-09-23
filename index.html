@@ -110,7 +110,11 @@ placeholder="例：副業初心者の20代">
 <option>保存してもらう</option>
 <option>商品を紹介する</option>
 </select>
-
+<label>作成するもの</label>
+<select id="contentType">
+  <option value="instagram">Instagram投稿</option>
+  <option value="note">note記事</option>
+</select>
 <button onclick="createPost()">
 ✨ 投稿案を作る
 </button>
@@ -129,7 +133,7 @@ async function createPost() {
   const theme = document.getElementById("theme").value;
   const target = document.getElementById("target").value;
   const goal = document.getElementById("goal").value;
-
+const contentType = document.getElementById("contentType").value;
   if (!theme) {
     alert("投稿テーマを入力してください");
     return;
@@ -151,7 +155,7 @@ async function createPost() {
           genre,
           theme,
           target,
-          goal
+          goal,contentType
         })
       }
     );
